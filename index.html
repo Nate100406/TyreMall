@@ -9,24 +9,8 @@
           voice: {
             url: "https://runtime-api.voiceflow.com"
           }
-        }).then(() => {
-          // Add proactive messages after chat has loaded
-          
-          // Single message example
-          window.voiceflow.chat.proactive.push({ 
-            type: 'text', 
-            payload: { message: 'hello world' } 
-          });
-          
-          // Multiple messages example
-          window.voiceflow.chat.proactive.push(
-            { type: 'text', payload: { message: 'Hey, I'm the tyre man.' } },
-            { type: 'text', payload: { message: 'I'm here to help you!' } }
-          );
         });
       }
-      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; 
-      v.type = "text/javascript"; 
-      s.parentNode.insertBefore(v, s);
+      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
   })(document, 'script');
 </script>
