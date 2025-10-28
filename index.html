@@ -1,32 +1,25 @@
 <script type="text/javascript">
-  (function (d, t) {
-    const v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-
-    v.onload = function () {
-      // 1) load the widget
-      window.voiceflow.chat
-        .load({
+  (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
           verify: { projectID: '6870d785673169e8c1e84bcf' },
           url: 'https://general-runtime.voiceflow.com',
-          versionID: 'production'
-        })
-        .then(() => {
-          // 2) (optional) open the chat window instead of just showing a bubble
-          // window.voiceflow.chat.open();
-
-          // 3) clear any previous proactive bubbles
-          window.voiceflow.chat.proactive.clear();
-
-          // 4) show your custom message
-          window.voiceflow.chat.proactive.push({
-            type: 'text',
-            payload: { message: "Hi, I'm the tyre man — I'm here to help you!" }
-          });
+          versionID: 'production',
+          voice: {
+            url: "https://runtime-api.voiceflow.com"
+          }
+        }).then(() => {
+          if (window.location.href.includes('https://thetyremall.co.za')) {
+            window.voiceflow.chat.proactive.clear(); // clear all previous messages
+            window.voiceflow.chat.proactive.push(
+              { type: 'text', payload: { message: 'Hi, I'm the tyre man, I'm here to help you' } }
+            ); // <== Fixed closing bracket
+          }
         });
-    };
-
-    v.src = 'https://cdn.voiceflow.com/widget/bundle.mjs';
-    v.type = 'text/javascript';
-    s.parentNode.insertBefore(v, s);
+      };
+      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; 
+      v.type = "text/javascript"; 
+      s.parentNode.insertBefore(v, s);
   })(document, 'script');
 </script>
