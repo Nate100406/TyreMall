@@ -10,14 +10,21 @@
             url: "https://runtime-api.voiceflow.com"
           }
         }).then(() => {
-          if (window.location.href.includes('https://nate100406.github.io/TyreMall/')) {
-            window.voiceflow.chat.proactive.clear(); // clear all previous messages
-            window.voiceflow.chat.proactive.push(
-              { type: 'text', payload: { message: 'Hi, I'm the tyre man, I'm here to help you' } }
-            ); // <== Fixed closing bracket
-          }
+          // Add proactive messages after chat has loaded
+          
+          // Single message example
+          window.voiceflow.chat.proactive.push({ 
+            type: 'text', 
+            payload: { message: 'hello world' } 
+          });
+          
+          // Multiple messages example
+          window.voiceflow.chat.proactive.push(
+            { type: 'text', payload: { message: 'Hey, I'm the tyre man.' } },
+            { type: 'text', payload: { message: 'I'm here to help you!' } }
+          );
         });
-      };
+      }
       v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; 
       v.type = "text/javascript"; 
       s.parentNode.insertBefore(v, s);
